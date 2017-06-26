@@ -13,8 +13,6 @@ import com.me.service.ITestService;
  */
 public class App 
 {
-
-    
 	public static void main(String[] args) {
 		ApplicationContext ac = null;  
 	    ITestService userService;
