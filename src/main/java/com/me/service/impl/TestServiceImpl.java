@@ -12,9 +12,10 @@ public class TestServiceImpl implements ITestService{
 
 	@Autowired
 	private IUserDao userDao;
+	
 	public Test getTestById(int id) {
 		
-		return userDao.;
+		return userDao.getTestById(id);
 	}
 
 }
