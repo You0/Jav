@@ -19,10 +19,10 @@ public class MainContorller {
 	@Autowired
 	ISearchService mSearchService;
 	
-	@Autowired
-	IMainService mMainService;
 	
-	
+	/**
+	 * 获取最新的电影
+	 * */
 	@RequestMapping(value="/last",method=RequestMethod.GET)
 	@ResponseBody
 	public Object getLastMovieList(@RequestParam("index")int index)
@@ -31,33 +31,60 @@ public class MainContorller {
 		return beans;
 	}
 	
-	
+	/**
+	 * 根据关键字搜索电影
+	 * */
 	@RequestMapping("/search")
 	@ResponseBody
-	public Object getMovieListByKey(@RequestParam("index")int index,@RequestParam("order")int order){
+	public Object getMovieListByKey(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("key")String key){
 		List<MovieListBean> beans = mSearchService.getMovieLstByKey(index, order);
 		return beans;
 	}
 	
-	
+	/**
+	 * 根据电影的类型搜索电影
+	 * 
+	 * */
 	@RequestMapping("/type")
 	@ResponseBody
-	public Object getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order){
+	public Object getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("type")String type){
 		List<MovieListBean> beans = mSearchService.getMovieListByType(index, order);
 		return beans;
 	}
 	
-	
+	/**
+	 * 根据电影的演员搜索电影
+	 * */
 	@RequestMapping("/actor")
 	@ResponseBody
-	public Object getMovieListByActor(@RequestParam("index")int index,@RequestParam("order")int order){
+	public Object getMovieListByActor(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("actor")String actor){
+		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		return beans;
+	}
+	
+	/**根据电影导演搜索电影*/
+	@RequestMapping("/actor")
+	@ResponseBody
+	public Object getMovieListByDirector(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("director")String director){
+		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		return beans;
+	}
+	
+	/**根据时间段搜索电影*/
+	@RequestMapping("/time")
+	@ResponseBody
+	public Object getMovieListByTime(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("time")String time){
 		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
 		return beans;
 	}
 	
 	
 	
-	
-	
-	
+	/**根据评分查看电影*/
+	@RequestMapping("/rating")
+	@ResponseBody
+	public Object getMovieListByRating(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("rating")String rating){
+		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		return beans;
+	}
 }
