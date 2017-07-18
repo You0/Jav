@@ -37,7 +37,7 @@ public class MainContorller {
 	@RequestMapping("/search")
 	@ResponseBody
 	public Object getMovieListByKey(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("key")String key){
-		List<MovieListBean> beans = mSearchService.getMovieLstByKey(index, order);
+		List<MovieListBean> beans = mSearchService.getMovieLstByKey(index, order,key);
 		return beans;
 	}
 	
@@ -48,7 +48,7 @@ public class MainContorller {
 	@RequestMapping("/type")
 	@ResponseBody
 	public Object getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("type")String type){
-		List<MovieListBean> beans = mSearchService.getMovieListByType(index, order);
+		List<MovieListBean> beans = mSearchService.getMovieListByType(index, order,type);
 		return beans;
 	}
 	
@@ -58,7 +58,7 @@ public class MainContorller {
 	@RequestMapping("/actor")
 	@ResponseBody
 	public Object getMovieListByActor(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("actor")String actor){
-		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order,actor);
 		return beans;
 	}
 	
@@ -66,7 +66,7 @@ public class MainContorller {
 	@RequestMapping("/actor")
 	@ResponseBody
 	public Object getMovieListByDirector(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("director")String director){
-		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		List<MovieListBean> beans = mSearchService.getMovieListByDirector(index, order,director);
 		return beans;
 	}
 	
@@ -74,7 +74,7 @@ public class MainContorller {
 	@RequestMapping("/time")
 	@ResponseBody
 	public Object getMovieListByTime(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("time")String time){
-		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		List<MovieListBean> beans = mSearchService.getMovieListByTime(index, order,time);
 		return beans;
 	}
 	
@@ -84,7 +84,31 @@ public class MainContorller {
 	@RequestMapping("/rating")
 	@ResponseBody
 	public Object getMovieListByRating(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("rating")String rating){
-		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order);
+		List<MovieListBean> beans = mSearchService.getMovieListByRating(index, order,rating);
 		return beans;
 	}
+	
+	
+	/**根据评分查看电影*/
+	@RequestMapping("/group")
+	@ResponseBody
+	public Object getMovieListByGroup(@RequestParam("index")int index,@RequestParam("order")int order
+			,@RequestParam("key")String key
+			,@RequestParam("type")String type
+			,@RequestParam("time")String time
+			,@RequestParam("actor")String actor
+			,@RequestParam("director")String director,
+			@RequestParam("rating")String rating){
+		
+		List<MovieListBean> beans = mSearchService.getMovieListByGroup(index, order,key,actor,director,time,
+				rating,type);
+		return beans;
+	}
+	
+
+	
+	
+	
+	
+	
 }
