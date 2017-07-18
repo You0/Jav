@@ -14,7 +14,7 @@ import com.me.service.IMainService;
 import com.me.service.ISearchService;
 
 @Controller
-@RequestMapping("/main")
+@RequestMapping("/search")
 public class MainContorller {
 	@Autowired
 	ISearchService mSearchService;
@@ -49,21 +49,9 @@ public class MainContorller {
 	@ResponseBody
 	public List<MovieListBean> getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("type")String type){
 		List<MovieListBean> beans = mSearchService.getMovieListByType(index, order,type);
-		for(int i=0;i<beans.size();i++){
-			System.out.println(beans.get(i).toString());
-		}
 		return beans;
 	}
 	
-	/**
-	 * 根据电影的演员搜索电影
-	 * */
-	@RequestMapping("/actor")
-	@ResponseBody
-	public Object getMovieListByActor(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("actor")String actor){
-		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order,actor);
-		return beans;
-	}
 	
 	/**根据电影导演搜索电影*/
 	@RequestMapping("/actor")
