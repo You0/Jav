@@ -47,7 +47,7 @@ public class MainContorller {
 	 * */
 	@RequestMapping("/type")
 	@ResponseBody
-	public Object getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("type")String type){
+	public List<MovieListBean> getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("type")String type){
 		List<MovieListBean> beans = mSearchService.getMovieListByType(index, order,type);
 		return beans;
 	}

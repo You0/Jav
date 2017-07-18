@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.me.dao.ISearchDao">
+
+<select id="getMovieListByGroup" parameterType="java.util.Map" resultType="com.me.dto.MovieListBean">
+	SELECT cover,title,actor,id,c_date
+	FROM movie
+	<where>
+		<if test='type!=null'>
+			type like '%${type}%'
+		</if>
+	
+		<if test='rating!=null'>
+			AND 
+			ratring <![CDATA[>=]]> #{rating}
+		</if>
+	
+		<if test='time!=null'>
+			AND 
+			unix_timestamp(c_date) <![CDATA[>=]]> unix_timestamp(#{time})
+			AND
+			unix_timestamp(c_date) <![CDATA[<=]]> unix_timestamp(#{time}) 
+		</if>
+	
+		<if test='actor!=null'>
+			AND actor like '%${actor}%'
+		</if>
+	
+		<if test='director!=null'>
+			AND director like '%${director}%'
+		</if>
+	
+		<if test='key!=null'>
+			AND MATCH(title_fc) AGAINST (#{key})
+		</if>
+	</where>
+	<if test='order==1'>
+		ORDER BY c_date ASC
+	</if>
+
+	<if test='order==-1'>
+		ORDER BY c_date DESC
+	</if>
+	
+	LIMIT #{from},#{pageSize}
+</select>
+
+</mapper>

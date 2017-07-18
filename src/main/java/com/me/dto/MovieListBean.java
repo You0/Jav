@@ -45,8 +45,10 @@ public class MovieListBean {
 	public void setC_date(Date c_date) {
 		this.c_date = c_date;
 	}
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "MovieListBean [cover=" + cover + ", tile=" + tile + ", actor=" + actor + ", id=" + id + ", c_date="
+				+ c_date + "]";
+	}
+
 }
