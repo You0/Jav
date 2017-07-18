@@ -17,15 +17,15 @@ public class SearchServiceImpl implements ISearchService{
 	@Autowired
 	private ISearchDao searchDao;
 	
-	@Override
+
 	public List<MovieListBean> getLastMovieList(int index) {
 		
 		return null;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieListByType(int index, int order, String type) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		int from = index * pageSize;
 		params.put("from", from);
 		params.put("pageSize", pageSize);
@@ -35,9 +35,9 @@ public class SearchServiceImpl implements ISearchService{
 		return list;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieLstByKey(int index, int order, String key) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("index", index);
 		params.put("order", order);
 		params.put("key", key);
@@ -45,9 +45,9 @@ public class SearchServiceImpl implements ISearchService{
 		return list;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieListByActor(int index, int order, String actor) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("index", index);
 		params.put("order", order);
 		params.put("actor", actor);
@@ -55,9 +55,9 @@ public class SearchServiceImpl implements ISearchService{
 		return list;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieListByDirector(int index, int order, String director) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("index", index);
 		params.put("order", order);
 		params.put("director", director);
@@ -65,9 +65,9 @@ public class SearchServiceImpl implements ISearchService{
 		return list;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieListByTime(int index, int order, String time) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("index", index);
 		params.put("order", order);
 		params.put("time", time);
@@ -75,9 +75,9 @@ public class SearchServiceImpl implements ISearchService{
 		return list;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieListByRating(int index, int order, String rating) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		int from = index * pageSize;
 		params.put("from", from);
 		params.put("pageSize", pageSize);
@@ -87,10 +87,10 @@ public class SearchServiceImpl implements ISearchService{
 		return list;
 	}
 
-	@Override
+
 	public List<MovieListBean> getMovieListByGroup(int index, int order, String key, String actor, String director,
 			String time, String rating, String type) {
-		HashMap<String, Object> params = new HashMap<>();
+		HashMap<String, Object> params = new HashMap<String, Object>();
 		int from = index * pageSize;
 		params.put("from", from);
 		params.put("pageSize", pageSize);

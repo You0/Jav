@@ -49,6 +49,9 @@ public class MainContorller {
 	@ResponseBody
 	public List<MovieListBean> getMovieListByType(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("type")String type){
 		List<MovieListBean> beans = mSearchService.getMovieListByType(index, order,type);
+		for(int i=0;i<beans.size();i++){
+			System.out.println(beans.get(i).toString());
+		}
 		return beans;
 	}
 	
