@@ -56,8 +56,8 @@ public class MainContorller {
 	/**根据电影导演搜索电影*/
 	@RequestMapping("/actor")
 	@ResponseBody
-	public Object getMovieListByDirector(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("director")String director){
-		List<MovieListBean> beans = mSearchService.getMovieListByDirector(index, order,director);
+	public Object getMovieListByDirector(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("actor")String actor){
+		List<MovieListBean> beans = mSearchService.getMovieListByDirector(index, order,actor);
 		return beans;
 	}
 	

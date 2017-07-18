@@ -2,6 +2,7 @@ package com.me.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,12 @@ public class SearchServiceImpl implements ISearchService{
 	
 
 	public List<MovieListBean> getLastMovieList(int index) {
-		
-		return null;
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		int from = index * pageSize;
+		params.put("from", from);
+		params.put("pageSize", pageSize);
+		List<MovieListBean> list = searchDao.getLastMovieList(params);
+		return list;
 	}
 
 
@@ -38,6 +43,9 @@ public class SearchServiceImpl implements ISearchService{
 
 	public List<MovieListBean> getMovieLstByKey(int index, int order, String key) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
+		int from = index * pageSize;
+		params.put("from", from);
+		params.put("pageSize", pageSize);
 		params.put("index", index);
 		params.put("order", order);
 		params.put("key", key);
@@ -48,6 +56,9 @@ public class SearchServiceImpl implements ISearchService{
 
 	public List<MovieListBean> getMovieListByActor(int index, int order, String actor) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
+		int from = index * pageSize;
+		params.put("from", from);
+		params.put("pageSize", pageSize);
 		params.put("index", index);
 		params.put("order", order);
 		params.put("actor", actor);
@@ -58,6 +69,9 @@ public class SearchServiceImpl implements ISearchService{
 
 	public List<MovieListBean> getMovieListByDirector(int index, int order, String director) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
+		int from = index * pageSize;
+		params.put("from", from);
+		params.put("pageSize", pageSize);
 		params.put("index", index);
 		params.put("order", order);
 		params.put("director", director);
@@ -68,6 +82,9 @@ public class SearchServiceImpl implements ISearchService{
 
 	public List<MovieListBean> getMovieListByTime(int index, int order, String time) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
+		int from = index * pageSize;
+		params.put("from", from);
+		params.put("pageSize", pageSize);
 		params.put("index", index);
 		params.put("order", order);
 		params.put("time", time);

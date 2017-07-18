@@ -3,6 +3,15 @@
 
 <mapper namespace="com.me.dao.ISearchDao">
 
+	
+<select id="getLastMovieList" parameterType="java.util.Map" resultType="com.me.dto.MovieListBean">	
+	SELECT cover,title,actor,id,c_date
+	FROM movie
+	ORDER BY c_date DESC
+	LIMIT ${from},#{pageSize}
+</select>
+	
+	
 <select id="getMovieListByGroup" parameterType="java.util.Map" resultType="com.me.dto.MovieListBean">
 	SELECT cover,title,actor,id,c_date
 	FROM movie
