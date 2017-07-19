@@ -72,7 +72,7 @@ public interface ISearchService {
 	 * 		ratirng 评分
 	 * 根据评分查询电影
 	 * */
-	public List<MovieListBean> getMovieListByRating(int index,int order,String rating);
+	public List<MovieListBean> getMovieListByRating(int index,int order,int rating);
 	
 	
 	/**

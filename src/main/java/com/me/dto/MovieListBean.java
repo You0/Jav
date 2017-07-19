@@ -11,7 +11,7 @@ public class MovieListBean {
 	private String cover;
 	private String tile;
 	private String actor;
-	private int id;
+	private String fh;
 	private Date c_date;
 	
 	
@@ -33,11 +33,11 @@ public class MovieListBean {
 	public void setActor(String actor) {
 		this.actor = actor;
 	}
-	public int getId() {
-		return id;
+	public String getFh() {
+		return fh;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setFh(String fh) {
+		this.fh = fh;
 	}
 	public Date getC_date() {
 		return c_date;
@@ -47,7 +47,7 @@ public class MovieListBean {
 	}
 	@Override
 	public String toString() {
-		return "MovieListBean [cover=" + cover + ", tile=" + tile + ", actor=" + actor + ", id=" + id + ", c_date="
+		return "MovieListBean [cover=" + cover + ", tile=" + tile + ", actor=" + actor + ", fh=" + fh + ", c_date="
 				+ c_date + "]";
 	}
 

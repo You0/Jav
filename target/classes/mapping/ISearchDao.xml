@@ -5,7 +5,7 @@
 
 	
 <select id="getLastMovieList" parameterType="java.util.Map" resultType="com.me.dto.MovieListBean">	
-	SELECT cover,title,actor,id,c_date
+	SELECT cover,title,actor,fh,c_date
 	FROM movie
 	ORDER BY c_date DESC
 	LIMIT ${from},#{pageSize}
@@ -13,7 +13,7 @@
 	
 	
 <select id="getMovieListByGroup" parameterType="java.util.Map" resultType="com.me.dto.MovieListBean">
-	SELECT cover,title,actor,id,c_date
+	SELECT cover,title,actor,fh,c_date
 	FROM movie
 	<where>
 		<if test='type!=null'>
@@ -22,14 +22,14 @@
 	
 		<if test='rating!=null'>
 			AND 
-			ratring <![CDATA[>=]]> #{rating}
+			rating <![CDATA[>=]]> ${rating}
 		</if>
 	
-		<if test='time!=null'>
+		<if test='beginTime!=null'>
 			AND 
-			unix_timestamp(c_date) <![CDATA[>=]]> unix_timestamp(#{time})
+			unix_timestamp(c_date) <![CDATA[>=]]> unix_timestamp(#{beginTime})
 			AND
-			unix_timestamp(c_date) <![CDATA[<=]]> unix_timestamp(#{time}) 
+			unix_timestamp(c_date) <![CDATA[<=]]> unix_timestamp(#{endTime}) 
 		</if>
 	
 		<if test='actor!=null'>

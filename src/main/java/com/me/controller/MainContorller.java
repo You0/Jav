@@ -54,12 +54,23 @@ public class MainContorller {
 	
 	
 	/**根据电影导演搜索电影*/
-	@RequestMapping("/actor")
+	@RequestMapping("/director")
 	@ResponseBody
-	public Object getMovieListByDirector(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("actor")String actor){
-		List<MovieListBean> beans = mSearchService.getMovieListByDirector(index, order,actor);
+	public Object getMovieListByDirector(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("director")String director){
+		List<MovieListBean> beans = mSearchService.getMovieListByDirector(index, order,director);
 		return beans;
 	}
+	
+	
+	/**根据电影演员搜索电影*/
+	@RequestMapping("/actor")
+	@ResponseBody
+	public Object getMovieListByActor(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("actor")String actor){
+		List<MovieListBean> beans = mSearchService.getMovieListByActor(index, order,actor);
+		return beans;
+	}
+	
+	
 	
 	/**根据时间段搜索电影*/
 	@RequestMapping("/time")
@@ -75,21 +86,22 @@ public class MainContorller {
 	@RequestMapping("/rating")
 	@ResponseBody
 	public Object getMovieListByRating(@RequestParam("index")int index,@RequestParam("order")int order,@RequestParam("rating")String rating){
-		List<MovieListBean> beans = mSearchService.getMovieListByRating(index, order,rating);
+		int ra = Integer.valueOf(rating);
+		List<MovieListBean> beans = mSearchService.getMovieListByRating(index, order,ra);
 		return beans;
 	}
 	
 	
-	/**根据评分查看电影*/
+	/**综合查询*/
 	@RequestMapping("/group")
 	@ResponseBody
 	public Object getMovieListByGroup(@RequestParam("index")int index,@RequestParam("order")int order
-			,@RequestParam("key")String key
-			,@RequestParam("type")String type
-			,@RequestParam("time")String time
-			,@RequestParam("actor")String actor
-			,@RequestParam("director")String director,
-			@RequestParam("rating")String rating){
+			,@RequestParam(value="key",required=false)String key
+			,@RequestParam(value="type",required=false)String type
+			,@RequestParam(value="time",required=false)String time
+			,@RequestParam(value="actor",required=false)String actor
+			,@RequestParam(value="director",required=false)String director,
+			@RequestParam(value="rating",required=false)String rating){
 		
 		List<MovieListBean> beans = mSearchService.getMovieListByGroup(index, order,key,actor,director,time,
 				rating,type);
