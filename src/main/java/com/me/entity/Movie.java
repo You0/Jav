@@ -16,6 +16,16 @@ public class Movie {
 	private String series = "";
 	private String time = "";
 	private String director = "";
+	private int id;
+	
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public int getId() {
+		return id;
+	}
 
 	public void setDirector(String director) {
 		this.director = director;
